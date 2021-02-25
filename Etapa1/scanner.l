@@ -37,8 +37,8 @@
 "<-"    { return LEFT_ASSIGN; }
 "->"    { return RIGHT_ASSIGN; }
 
-"TRUE"  { return LIT_TRUE; }
-"FALSE" { return LIT_FALSE; }
+"true"  { return LIT_TRUE; }
+"false" { return LIT_FALSE; }
 
 [0-9]*               { hashInsert(yytext); return LIT_INTEGER; }
 
