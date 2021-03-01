@@ -1,13 +1,13 @@
 %{
-
+// Aluno: Gabriel Lando
 #include <stdio.h>
 #include <stdlib.h>
 
 #define SYMBOL_LIT_INT              1
-#define SYMBOL_LIT_REAL             2
-#define SYMBOL_LIT_TRUE             3
-#define SYMBOL_LIT_FALSE            4
-#define SYMBOL_LIT_CHAR             5
+#define SYMBOL_LIT_CHAR             2
+#define SYMBOL_LIT_BOOL             3
+#define SYMBOL_LIT_TRUE             4
+#define SYMBOL_LIT_FALSE            5
 #define SYMBOL_LIT_STRING           6
 #define SYMBOL_IDENTIFIER           7
 
