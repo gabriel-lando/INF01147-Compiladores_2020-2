@@ -1,7 +1,7 @@
 %{
     // Aluno: Gabriel Lando
-    #include "tokens.h"
-    #include "hash.h"
+    #include "y.tab.h"
+    #include "hash.c"
 
     char *s;
     char buffer[STRING_SIZE];
@@ -40,13 +40,13 @@
 "true"  { return LIT_TRUE; }
 "false" { return LIT_FALSE; }
 
-[0-9]*               { hashInsert(yytext); return LIT_INTEGER; }
+[0-9]*               { hashInsert(yytext, 0); return LIT_INTEGER; }
 
 \"      { BEGIN(STRING); s = buffer; }
 
 \'.\'   {   yytext[0] = yytext[1]; 
             yytext[1] = '\0';
-            hashInsert(yytext);
+            hashInsert(yytext, 0);
             return LIT_CHAR;
         }
         
@@ -68,14 +68,12 @@
 <STRING>\"      {	*s = 0;
                     BEGIN(INITIAL);
                     yytext = buffer;
-                    hashInsert(yytext);
+                    hashInsert(yytext, 0);
                     return LIT_STRING;
                 }
 <STRING>.       { *s++ = *yytext; }
 
 %%
-
-#include "main.c"
 
 int getLineNumber() {
     return lineNumber;

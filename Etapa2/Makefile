@@ -8,12 +8,24 @@
 # and #include "main.c" in the last part of the scanner.l
 #
 
-etapa2: y.tab lex.yy.c main.c hash.c
-	gcc -o etapa2 lex.yy.c hash.c
+
+etapa2: y.tab.o lex.yy.o main.o
+	gcc y.tab.o lex.yy.o main.o -o etapa2
+
+main.o: main.c
+	gcc -c main.c
+
+lex.yy.o: lex.yy.c
+	gcc -c lex.yy.c
+
+y.tab.o: y.tab.c
+	gcc -c y.tab.c
+
+y.tab.c: parser.y
+	yacc -d -v parser.y
+
 lex.yy.c: scanner.l
-	lex scanner.l
-y.tab: parser.y
-	yacc -v parser.y -d
+	lex scanner.l 
 
 clean:
-	rm -rf lex.yy.c y.tab.h y.tab.c etapa2 y.output
+	rm -rf *.o lex.yy.c y.tab.c y.tab.h y.output etapa2
