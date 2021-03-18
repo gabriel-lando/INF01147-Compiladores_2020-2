@@ -42,12 +42,12 @@
 
 [0-9]*               { yylval.symbol = hashInsert(LIT_INTEGER,yytext); return LIT_INTEGER; }
 
-'(\\.|[^'\n])*\'	{ if (yyleng==3) { 
+'(\\.|[^'\n])*\'    { if (yyleng==3) { 
                         yylval.symbol = hashInsert(LIT_CHAR,yytext);
                         return LIT_CHAR;
                       } else return TOKEN_ERROR; }
 
-\"(\\.|[^\"\n])*\" 	 { yylval.symbol = hashInsert(LIT_STRING,yytext); return LIT_STRING; }
+\"(\\.|[^\"\n])*\"   { yylval.symbol = hashInsert(LIT_STRING,yytext); return LIT_STRING; }
         
 [a-z_A-Z]+[a-zA-Z_0-9]*     { if( yytext[-1]!='"') {
                                 yylval.symbol = hashInsert(TK_IDENTIFIER,yytext); 
@@ -81,7 +81,7 @@ int yywrap() {
 }
 
 void initMe() {
-	Running = 1;
-	lineNumber = 1;
-	hashInit();
+    Running = 1;
+    lineNumber = 1;
+    hashInit();
 }

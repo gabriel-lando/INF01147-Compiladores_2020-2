@@ -1,12 +1,12 @@
 // Aluno: Gabriel Lando
 
+#ifndef __ASTREE__
+#define __ASTREE__
+
 #include "hash.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#ifndef __ASTREE__
-#define __ASTREE__
 
 #define MAX_SONS 4
 
